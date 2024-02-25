@@ -1,0 +1,84 @@
+<form [formGroup]="appartmentFormB">
+    <div class="mb-3">
+        <label class="form-label">
+            Appartment number
+        </label>
+        <input class="form-control" type="text" formControlName="appartNum" 
+             >
+        <div class="alert alert-danger" *ngIf="appartmentFormB.get('appartNum')!.invalid && (appartmentFormB.get('appartNum')!.touched || appartmentFormB.get('appartNum')!.dirty)">
+            <div *ngIf="appartmentFormB.get('appartNum')!.errors!['required']">Appartment number is required !</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            floor Number
+        </label>
+        <input class="form-control" formControlName="floorNum" type="text" 
+            >
+        <div class="alert alert-danger" *ngIf="floorNum.invalid && (floorNum.touched || floorNum.dirty)">
+            <div *ngIf="floorNum.errors!['required']">floor Number is required </div>
+            <div *ngIf="floorNum.errors!['pattern']">floor Number invalid !</div>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            Surface
+        </label>
+        <input class="form-control" formControlName="surface" type="text" 
+            >
+        <div class="alert alert-danger" *ngIf="surface.invalid && (surface.touched || surface.dirty)">
+            <div *ngIf="surface.errors!['required']">Surface is required </div>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            Terrace
+        </label>
+  <input type="radio" id="yes" name="fav_language1" value="yes">
+  <label for="yes">Yes</label><br>
+  <input type="radio" id="No" name="fav_language1" value="No">
+  <label for="No">No</label>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            Surface Terrace
+        </label>
+        <input class="form-control" formControlName="surface" type="text" 
+            >
+        <div class="alert alert-danger" *ngIf="surfaceTerrace.invalid && (surfaceTerrace.touched || surfaceTerrace.dirty)">
+            <div *ngIf="surfaceTerrace.errors!['required']">Surface Terrace is required </div>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            Category
+        </label>
+  <input type="radio" id="S+1" name="fav_language" value="S+1">
+  <label for="S+1">S+1</label><br>
+  <input type="radio" id="S+2" name="fav_language" value="S+2">
+  <label for="S+2">S+2</label>
+<input type="radio" id="S+3" name="fav_language" value="S+3">
+  <label for="S+3">S+3</label>
+
+    </div>
+    <div class="mb-3">
+        <label class="form-label">
+            Description
+        </label>
+        <input class="form-control" formControlName="description" type="text" 
+            >
+        <div class="alert alert-danger" *ngIf="description.invalid && (description.touched || description.dirty)">
+            <div *ngIf="description.errors!['required']">Description is required </div>
+            <div *ngIf="description.errors!['minlength']">Description must have at least 10 characters !</div>
+            <div *ngIf="description.errors!['pattern']">Description invalid !</div>
+        </div>
+
+    </div>
+    <div class="mb-3">
+        <input type="submit"  [disabled]="appartmentFormB.invalid">
+    </div>
+</form>

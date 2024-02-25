@@ -1,0 +1,44 @@
+<table class="table">
+    <tr>
+        <td>ID</td>
+        <td>NAME</td>
+        <td>Address</td>
+        <td>Image</td>
+    </tr>
+    <tr *ngFor="let r of listResidences">
+        <td>{{r.id}}</td>
+        <td>{{r.name}}</td>
+        <td>{{r.address}}</td>
+        <td>{{r.image}}</td>
+        <td><button (click)="showApartments(r)">Show Apartments</button>
+        <div *ngIf="r.apartments.length > 0">
+          <h4>Apartments:</h4>
+          <li><a class="nav-link" routerLink="/addAppartement">Ajouter Appartement</a></li>
+          <div>
+            <!-- Add input for searching by surface -->
+            <label for="surfaceSearch">Search by Surface:</label>
+            <input type="text" id="surfaceSearch" [(ngModel)]="search" />
+            <button (click)="searchApartments()">Search</button>
+          </div>
+          <ul>
+            <li *ngFor="let a of r.apartments">
+              {{ a.appartNum }}
+              {{ a.floorNum }}
+              {{ a.surface }}
+              {{ a.terrace }}
+              {{ a.surfaceTerrace }}
+              {{ a.category }}
+              {{ a.description }}
+              {{ a.like }}
+              <td><button (click)='like(a)'>Like</button>
+                <p *ngIf="a.like>0">Favorite Apartment</p>
+                </td>
+            </li>
+          </ul>
+          
+        </div>
+        <div *ngIf="r.apartments.length === 0">No Apartment found</div>
+        
+    </tr>
+
+</table>
